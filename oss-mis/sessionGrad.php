@@ -1,0 +1,16 @@
+<?php
+// Establishing Connection with Server by passing server_name, user_id and password as a parameter
+$connection = mysqli_connect("localhost", "root", "");
+// Selecting Database
+$db = mysqli_select_db("tryit", $connection);
+session_start(); // Starting Session
+// Storing Session
+$user_check = $_SESSION['login_grad'];
+// SQL Query To Fetch Complete Information Of User
+$ses_sql           = mysqli_query("select username from graduate where username='$user_check'", $connection);
+$row               = mysqli_fetch_assoc($ses_sql);
+$login_sessionGrad = $row['username'];
+if (!isset($login_sessionGrad)) {
+    mysqli_close($connection); // Closing Connection
+    header('Location: graduatesProfile.php'); // Redirecting To Home Page
+}

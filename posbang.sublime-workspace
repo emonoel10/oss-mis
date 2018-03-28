@@ -1,0 +1,565 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pwreset",
+				"pwreset_code"
+			],
+			[
+				"account",
+				"accountId"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"serial",
+				"serializeArray\t.serializeArray()"
+			],
+			[
+				"grad",
+				"gradCountData"
+			],
+			[
+				"employ",
+				"employmentChartHeader"
+			],
+			[
+				"presentEmpl",
+				"presentEmployed"
+			],
+			[
+				"presentNot",
+				"presentNotEmployedCount"
+			],
+			[
+				"courseTotal",
+				"courseTotalHsPublicData"
+			],
+			[
+				"bsit",
+				"bsitHsPublicTypeData"
+			],
+			[
+				"countQuery",
+				"countQueryString"
+			],
+			[
+				"totBS",
+				"totBSIT"
+			],
+			[
+				"statusSingle",
+				"statusSingleData"
+			],
+			[
+				"bsitStatus",
+				"bsitStatusSingleCount"
+			],
+			[
+				"bsitHs",
+				"bsitHsSectorCount"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"fema",
+				"femaleGenderData"
+			],
+			[
+				"gender",
+				"gender"
+			],
+			[
+				"High",
+				"Highcharts"
+			],
+			[
+				"array",
+				"array_filter"
+			],
+			[
+				"genderQuer",
+				"genderQueryResult"
+			],
+			[
+				"hcGender",
+				"hcGenderHeader"
+			],
+			[
+				"strto",
+				"strtoupper"
+			],
+			[
+				"upper",
+				"strtoupper"
+			],
+			[
+				"mysqli_",
+				"mysqli_num_rows"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"CodeFormatter: Format as PHP Syntax"
+			],
+			[
+				"format",
+				"CodeFormatter: Format as HTML Syntax"
+			],
+			[
+				"Pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"PAcka",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 519.0
+	},
+	"console":
+	{
+		"height": 143.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/noelc/Documents/Projects/posbang",
+		"/home/noelc/Documents/Projects/posbang/accounts"
+	],
+	"file_history":
+	[
+		"/home/noelc/Documents/Projects/oss-mis/action_pageGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/graduatesForm2.php",
+		"/home/noelc/Documents/Projects/oss-mis/viewProfile.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/registerGrad.php",
+		"/home/noelc/Documents/Projects/resources/Highcharts-6.0.5/examples/pie-basic/index.htm",
+		"/home/noelc/Documents/Projects/oss-mis/forgotPasswordController.php",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/forgotPassword.js",
+		"/root/.config/sublime-text-3/Packages/User/CodeFormatter.sublime-settings",
+		"/home/noelc/Documents/Projects/oss-mis/forgotPassword.php",
+		"/home/noelc/Documents/Projects/oss-mis/config.rb",
+		"/home/noelc/Documents/Projects/oss-mis/config.php",
+		"/home/noelc/Documents/Projects/test.php",
+		"/etc/lightdm/lightdm-gtk-greeter.conf",
+		"/etc/lightdm/slick-greeter.conf",
+		"/etc/php/php.ini",
+		"/usr/share/lightdm/lightdm.conf.d/99-ldm.conf",
+		"/usr/share/lightdm/lightdm.conf.d/60-slick-greeter.conf",
+		"/usr/share/lightdm/lightdm.conf.d/99_overrides.conf",
+		"/usr/share/lightdm/lightdm.conf.d/10_solus_default.conf",
+		"/home/noelc/4",
+		"/home/noelc/Documents/Projects/oss-mis/redirectUpdate.php",
+		"/home/noelc/Documents/Projects/oss-mis/redirectSocioForm.php",
+		"/home/noelc/Documents/Projects/oss-mis/redirectHome.php",
+		"/home/noelc/Documents/Projects/oss-mis/redirectGraduates.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/redirectUpdate.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/redirectSocioProfiles.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/redirectSocioForm.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/redirectHome.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/redirectGraduates.php",
+		"/home/noelc/Documents/Projects/oss-mis/index.php",
+		"/home/noelc/Documents/Projects/oss-mis/bootstrap/js/bootstrap.min.js",
+		"/home/noelc/Documents/Projects/oss-mis/sampleFilter.php",
+		"/etc/kernel/cmdline.d/10_resume.conf",
+		"/home/noelc/.hidden",
+		"/etc/kernel/ls",
+		"/etc/kernel/cmdline",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/highcharts/examples/pie-basic/index.htm",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/highcharts/examples/chart-update/index.htm",
+		"/home/noelc/.conky/conky_light_by_la_manoue-d675qc7/conky_light/.conkyrc",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/highcharts/examples/responsive/index.htm",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/highcharts/examples/pie-drilldown/index.htm",
+		"/home/noelc/Documents/Projects/oss-mis/assets/js/demo.js",
+		"/home/noelc/Documents/Projects/tryit.sql",
+		"/home/noelc/Documents/Projects/oss-mis/graduatesProfile.php",
+		"/home/noelc/.conky/conky2_by_dinozaur1982-d58gktj/.conkyrc",
+		"/home/noelc/.conky/conky2_by_dinozaur1982-d58gktj/rings-v1.2.1.lua",
+		"/home/noelc/.conky/conky_light_by_la_manoue-d675qc7/conky_light/rings-v1.2.1.lua",
+		"/etc/nginx/nginx.conf",
+		"/etc/nginx/sites-enabled/oss-mis",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/function.php",
+		"/home/noelc/Documents/Projects/oss-mis/.htaccess",
+		"/home/noelc/.conky/TeejeeTech/Network Panel",
+		"/home/noelc/Documents/Projects/oss-mis/graduatesLogin.php",
+		"/etc/nginx/sites-available/oss-mis",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/stock-photo-the-dress-of-a-young-girl-dressed-in-thailand-for-dance-performances-333733295.jpg",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/socioLogin.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/viewSearch.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/viewProfile.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/view.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/validateUser.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/validateGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/validate.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateTraining.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateSocioProfile.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updatePersonal.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateParent.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateGenInfo.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateEmployment.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/updateEducation.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/update.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/socio_tbl.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/socio_tbl-original.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/socio_form.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/sessionGrad2.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/sessionGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/session2.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/session.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/search.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/sampleFilter.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/sample.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/loginGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/oss-mis/login.php",
+		"/home/noelc/Documents/Projects/oss-mis/filterSearch.php",
+		"/home/noelc/Documents/Projects/oss-mis/viewSearch.php",
+		"/home/noelc/Documents/Projects/oss-mis/view.php",
+		"/home/noelc/Documents/Projects/oss-mis/validateGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateTraining.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateSocioProfile.php",
+		"/home/noelc/Documents/Projects/oss-mis/updatePersonal.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateParent.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateGenInfo.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateEmployment.php",
+		"/home/noelc/Documents/Projects/oss-mis/updateEducation.php",
+		"/home/noelc/Documents/Projects/oss-mis/update.php",
+		"/home/noelc/Documents/Projects/oss-mis/socio_tbl-original.php",
+		"/home/noelc/Documents/Projects/oss-mis/socio_form2.php",
+		"/home/noelc/Documents/Projects/oss-mis/sessionGrad2.php",
+		"/home/noelc/Documents/Projects/oss-mis/sessionGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/session2.php",
+		"/home/noelc/Documents/Projects/oss-mis/search.php",
+		"/home/noelc/Documents/Projects/oss-mis/sample.php",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/socio_tbl.php",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/samplefilter-original.php",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/sampleFilter.php",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/function2.php",
+		"/home/noelc/Documents/Projects/oss-mis/pagination/filterGrad-original.php",
+		"/home/noelc/Documents/Projects/oss-mis/filterGraduates.php",
+		"/home/noelc/Documents/Projects/oss-mis/filterGrad.php",
+		"/home/noelc/Documents/Projects/oss-mis/db.php",
+		"/home/noelc/Documents/Projects/oss-mis/copySocio",
+		"/home/noelc/Documents/Projects/oss-mis/action_page.php",
+		"/home/noelc/Documents/Projects/OSS MIS/tryit.sql",
+		"/home/noelc/Documents/Projects/oss-mis/admin.php",
+		"/home/noelc/Documents/Projects/oss-mis/loginGrad.php",
+		"/root/.config/sublime-text-3/Packages/CodeFormatter/CodeFormatter.sublime-settings",
+		"/home/noelc/Documents/Projects/OSS MIS/oss-mis/adminGrad.php",
+		"/home/noelc/Documents/Projects/OSS MIS/oss-mis/admin.php",
+		"/opt/lampp/etc/proftpd.conf",
+		"/etc/hosts",
+		"/usr/share/applications/xampp.desktop",
+		"/usr/share/lightdm/lightdm-gtk-greeter.conf.d/20_budgie_material.conf",
+		"/etc/modprobe.d/broadcom-wl.conf",
+		"/usr/share/applications/plank.desktop",
+		"/home/noelc/.config/plank/dock1/launchers/planksetting.dockitem",
+		"/home/noelc/Downloads/linux-driver-management-0.1.0/README.md"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 185.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 162.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "posbang.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"viewprofile",
+				"viewProfile.php"
+			],
+			[
+				"graduatesform2",
+				"graduatesForm2.php"
+			],
+			[
+				"graduatesl",
+				"graduatesLogin.php"
+			],
+			[
+				"socio",
+				"socioLogin.php"
+			],
+			[
+				"login.p",
+				"login.php"
+			],
+			[
+				"sociologin",
+				"socioLogin.php"
+			],
+			[
+				"",
+				"filterGrad.php"
+			],
+			[
+				"sample",
+				"sampleFilter.php"
+			],
+			[
+				"filter",
+				"filterGrad.php"
+			],
+			[
+				"samplefilter",
+				"sampleFilter.php"
+			],
+			[
+				"samplefil",
+				"sampleFilter.php"
+			],
+			[
+				"filtergrad",
+				"filterGrad.php"
+			],
+			[
+				"sampl",
+				"sampleFilter.php"
+			],
+			[
+				"prep",
+				"js/prep.js"
+			],
+			[
+				"finalquer",
+				"query/finalquery2.php"
+			],
+			[
+				"session",
+				"sessionGrad.php"
+			],
+			[
+				"graduater",
+				"graduatesForm2.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"final",
+				"query/finalquery.php"
+			],
+			[
+				"sociolog",
+				"socioLogin.php"
+			],
+			[
+				"login",
+				"login.php"
+			],
+			[
+				"grad",
+				"graduatesLogin.php"
+			],
+			[
+				"sessiong",
+				"sessionGrad.php"
+			],
+			[
+				"graduates",
+				"graduatesProfile.php"
+			],
+			[
+				"validategrad",
+				"validateGrad.php"
+			],
+			[
+				"admin",
+				"admin.php"
+			],
+			[
+				"redirects",
+				"redirectSocioProfiles.php"
+			],
+			[
+				"funct",
+				"pagination/function.php"
+			],
+			[
+				"loging",
+				"loginGrad.php"
+			],
+			[
+				"logingra",
+				"oss-mis/loginGrad.php"
+			],
+			[
+				"socio_",
+				"socio_form.php"
+			],
+			[
+				"socio_tbl",
+				"socio_tbl.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/home/noelc/Documents/Projects/oss-mis/System.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 317.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

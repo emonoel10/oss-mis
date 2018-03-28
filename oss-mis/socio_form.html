@@ -1,0 +1,568 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>DNSC - Socio-economic Form</title>
+<!-- for-mobile-apps -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type='text/javascript' src='js/mobile.js'></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Validation Signup Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- //for-mobile-apps -->
+<link href="css2/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- fonts -->
+<link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/mobile.css">
+<script type='text/javascript' src='js2/mobile.js'></script>
+<!-- //fonts -->
+<script type="text/javascript" src="js2/jquery.min.js"></script>
+<script type="text/javascript" src="js2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js2/jquery.inputfocus-0.9.min.js"></script>
+<script type="text/javascript" src="js2/jquery.main.js"></script>
+<style type="text/css">
+	#btn
+  {
+    width: 150px;
+    border:solid 1px black;
+    padding:10px;
+    background-color: #2E8B57;
+    font-size:14px;
+  }
+
+  #btn:hover
+  {
+    background:#2E8B57;
+    color:#00FA9A;
+    cursor:pointer;
+  }
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+     //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        var max_fields = document.getElementById('nsib').value;
+        while(x <= max_fields){ //max input box allowed
+           
+            $(wrapper).append('<div id="display"><input type="text" name="mytext[]" id = "sib" placeholder="Name">&nbsp;<select id="sibling" name="sibling"><option>–– Educational Attainment ––</option><option>Elementary</option><option>High School</option><option>College</option><option>Graduate School</option></select><a href="#" id="remScnt" style="color: white;">Remove</a></div>'); //add input box
+             x++; //text box increment
+        }
+
+        $('#remScnt').live('click', function(){
+        	if (x > 0){
+        		$(this).parents('#display').remove();
+        		x--;
+        	}
+        	return false;
+        });
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
+<script language="JavaScript">
+
+function enable_textTel(status)
+{
+status=!status;	
+	document.f1.tel.disabled = status;
+}
+
+function enable_textCel(status)
+{
+status=!status;	
+	document.f1.cel.disabled = status;
+}
+
+function enable_textDialect(status)
+{
+status=!status;	
+	document.f1.otherDialect.disabled = status;
+}
+
+function enable_textAppliances(status)
+{
+status=!status;	
+	document.f1.otherAppliances.disabled = status;
+}
+</script>
+
+<script type="text/javascript">
+
+function Disable(aList)
+{
+var x=document.getElementById("ethnicInput");
+
+x.disabled=(aList.selectedIndex == 0 || aList.selectedIndex == 1 || aList.selectedIndex == 2 || aList.selectedIndex == 3 || aList.selectedIndex == 4);
+}
+</script>
+
+<script type="text/javascript">
+
+function Disable2(aList)
+{
+var x=document.getElementById("religionTwo");
+
+x.disabled=(aList.selectedIndex == 0 || aList.selectedIndex == 1 || aList.selectedIndex == 2 || aList.selectedIndex == 3);
+}
+</script>
+
+<script type="text/javascript">
+
+function disableLight(aList)
+{
+var x=document.getElementById("otherLight");
+x.disabled=(aList.selectedIndex == 0 || aList.selectedIndex == 1 || aList.selectedIndex == 2);
+}
+</script>
+
+<script type="text/javascript">
+
+function disableTransport(aList)
+{
+var x=document.getElementById("otherTransport");
+x.disabled=(aList.selectedIndex == 0 || aList.selectedIndex == 1 || aList.selectedIndex == 2 || aList.selectedIndex == 3 || aList.selectedIndex == 4 || aList.selectedIndex == 5);
+}
+</script>
+</head>
+<body>
+
+
+	
+	<div id="header">
+		<h1><a href="index.html">DAVAO DEL NORTE STATE COLLEGE <span>Socio-Economic Profiling &amp; Graduate Tracer Survey</span></a></h1>
+		<ul id="navigation">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li class = "current">
+				<a href="socio_tbl.html">Socio-Economic</a>
+				<ul>
+					<li class = "current">
+						<a href="socio_form.html">Socio Form</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="graduates.html">Graduates</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			
+		</ul>
+	</div>
+	<div id="body">
+	<h5><center><b>I. DIRECTIONS:</b> Fill in the text fields with the information called for or check mark <br> in the box that corresponds to your appropriate answer.</center></h5>
+	<div class="main">
+		<div id="progress_bar">
+        <div id="progress"></div>
+        <div id="progress_text">0% Complete</div>
+	</div>
+		<div class="content">
+			<div id="container" >
+				<form action="userInfo.php" id = "myForm" name="f1" method="post">
+					<!-- #first_step -->
+					<div id="first_step">
+					<div class="form">
+					<h1>Student's Personal Data </h1>
+					<hr />
+					<h5><b>NOTE:</b> The personal data of respondent in terms of <u>name</u>, <u>age</u>, <u>sex</u>, <u>marital status</u>, <u>siblings currently enrolled in DNSC</u>, <u>stanine</u> &amp; <u>course taken</u>.
+					<hr />
+					</h5>
+						
+							<h5>FULL NAME</h5>
+							<input type="text" name="lname" class = "capitalize" id="lname" pattern = [a-zA-Z]+ placeholder = "Last Name"  value="">
+							<input type="text" name="fname" class = "capitalize" id="fname" placeholder = "First Name"  value="">
+							<input type="text" name="mname" class = "capitalize" id="mname" placeholder = "Middle Name"  value=""> 
+							
+							<h5>COMPLETE ADDRESS</h5>
+							<input type="text" name="brgy" class = "capitalize" id="brgy" placeholder = "Barangay" value="">
+							<input type="text" name="city" class = "capitalize" id="city" placeholder = "City/Municipality" value="">
+							<input type="text" name="province" id="province" placeholder = "Province" class = "capitalize" value="">  
+								
+							<h5>COURSE</h5>		
+							<select id="course" name="course">
+								<option>–– Choose below ––</option>
+								<option>Bachelor of Science in Information Technology (BSIT)</option>
+								<option>Bachelor of Science in Education (BSEd)</option>
+								<option>Bachelor of Science in Food Technology (BSFT)</option>
+								<option>Bachelor of Science in Marine Technology (BSMB)</option>
+								<option>Bachelor of Public Administration (BPA)</option>
+								<option>Bachelor of Science in Fisheries (BSF)</option>
+							</select>
+							
+							<h5>GENDER</h5>
+							<select id="gender" name="gender">
+								<option>–– Choose below ––</option>
+								<option>Female</option>
+								<option>Male</option>
+							</select>
+							
+							<input type="number" min="1" step="1" name="age" id="age" placeholder = "Age" value="">
+							
+							<h5>MARITAL STATUS</h5>		
+							<select id="status" name="status">
+								<option>–– Choose below ––</option>
+								<option>Single</option>
+								<option>Married</option>
+								<option>Separated</option>
+								<option>Widow</option>
+							</select>
+							
+							<h5>NUMBER OF SIBLING/S ENROLLED IN DNSC</h5>
+							<input type="number" min="0" step="1" name="sibling" id="sibling" placeholder = "(Numeric only)" value="">
+							
+							<h5>STANINE (OLSAT Result)</h5>		
+							<select id="stanine" name="stanine">
+								<option>–– Choose below ––</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+							</select>
+							
+							<h5>COMMUNICATION (Check if applicable.)</h5>
+							<input type="checkbox" name=others onclick="enable_textTel(this.checked)">		
+							<input type="text" name="tel" disabled = "true" id="tel" placeholder = "Telephone Number" maxlength="8" value="">
+							<input type="checkbox" name=others onclick="enable_textCel(this.checked)">
+							<input type="text" name="cel" disabled = "true" id="cel" placeholder = "Cellphone Number" minlength = "11" maxlength="11" value="">
+							
+						</div><center>
+						<input class="submit" type="submit" name="submit_first" id="submit_first" value="NEXT" /><br><br>
+						</center>
+					</div>  
+					
+					<!-- #second_step -->
+					<div id="second_step">
+					<h1>Student's Social Status</h1>
+					<hr />
+					<h5><b>NOTE:</b> The social status of respondent in terms of <u>name of high school</u> &amp; <u>year graduated</u>, <u>ethic origin</u>, <u>home address</u>, <u>highest educational attainment</u>, <u>religion</u> &amp; <u>dialect used</u>.
+					<hr />
+					</h5>
+						<div class="form">
+							<h5>NAME OF HIGH SCHOOL GRADUATED &amp; YEAR GRADUATED</h5>
+							<input type="text" name="hsGraduated" id="hsGraduated" value="">
+							<select id="yearGrad" name="yearGrad">
+								<option>-Year Graduated-</option>
+								<option>2019-2020</option>
+								<option>2018-2019</option>
+								<option>2017-2018</option>
+								<option>2016-2017</option>
+								<option>2015-2016</option>
+								<option>2014-2015</option>
+								<option>2013-2014</option>
+								<option>2012-2013</option>
+								<option>2011-2012</option>
+								<option>2010-2011</option>
+								<option>2009-2010</option>
+								<option>2008-2009</option>
+								<option>2007-2008</option>
+								<option>2006-2007</option>
+								<option>2005-2006</option>
+								<option>2004-2005</option>
+								<option>2003-2004</option>
+								<option>2002-2003</option>
+								<option>2001-2002</option>
+								<option>2000-2001</option>
+							</select>
+
+							<h5>TYPE OF HIGH SCHOOL ORIGIN</h5>
+							<select id="hsType" name="hsType">
+   								<option>–– Choose below ––</option>
+								<option>Public</option>
+								<option>Private</option>
+							</select>
+							
+   							<h5> ETHNIC ORIGIN </h5>
+   							<select id="ethnicSlct" name="ethnicSlct" onchange="Disable(this)">
+   								<option>–– Choose below ––</option>
+								<option>Davawenyo</option>
+								<option>Muslim</option>
+								<option>Visaya</option>
+								<option>Tagalog</option>
+								<option>Others</option>
+							</select>
+
+							<input id = "ethnicInput" name="ethnicInput" disabled = "true" type="text" placeholder = "If others, please specify." value="">
+
+							<h5> NUMBER OF SIBLING/S (Brothers/Sisters) </h5>
+							<input type="number" min="0" step="1" name="nSibling" id="nSibling" value="">
+
+							<h5> FATHER'S NAME &amp; EDUCATIONAL ATTAINMENT</h5>
+							<input type="text" class = "capitalize" name="fatherEd" id="fatherEd" placeholder = "Name" value="">
+							<select id="fAttain" name="fAttain"> 
+								<option>–– Educational Attainment ––</option>
+								<option>Elementary</option>
+								<option>High School</option>
+								<option>College</option>
+							<option>Graduate School</option>
+							</select>
+							<h5> MOTHER'S NAME &amp; EDUCATIONAL ATTAINMENT </h5>
+							<input type="text" class = "capitalize" name="motherEd" id="motherEd" placeholder = "Name" value="">
+							<select id="mAttain" name="mAttain">
+   								<option>–– Educational Attainment ––</option>
+								<option>Elementary</option>
+								<option>High School</option>
+								<option>College</option>
+								<option>Graduate School</option>
+							</select>
+
+							<h5>NUMBER OF SIBLINGS ALREADY IN SCHOOL <br>(Click GENERATE button after)</h5>
+   							<input type = "number" min="0" step="1" name="nsib" id="nsib" placeholder = "(Numeric only)" />&nbsp;&nbsp;&nbsp;&nbsp;<button id = "btn" class="add_field_button">GENERATE</button>
+   							<div class="input_fields_wrap">
+    						<h5> SIBLING'S NAME &amp; EDUCATIONAL ATTAINMENT </h5>
+    						<div>
+    						
+							</div>
+							</div>
+
+							<h5> RELIGION </h5>
+							<select id="religion" name="religion" onchange="Disable2(this)">
+   								<option>–– Choose below ––</option>
+								<option>Catholic</option>
+								<option>Protestant/Evangelical</option>
+								<option>Muslim/Islam</option>
+								<option>Other Christian groups</option>
+							</select>
+							<input type="text" disabled = "true" name="religionTwo" id="religionTwo" placeholder = "If other Christian groups, please specify..." value="">
+
+							<h5> DIALECT/S SPOKEN </h5>
+							<div class="checkbox">
+       					    <h6 style = "color: white;"><input id = "chckbx1" type="checkbox" name="chk[]" value = "Visayan">Visayan
+    				        <input type="checkbox" name="chk[]" value = "Tagalog" id = "chckbx2">Tagalog
+    				        <input type="checkbox" name="chk[]" value = "English" id = "chckbx3">English <br>
+    				        <input type="checkbox" id = "chckbx4" name=others onclick="enable_textDialect(this.checked)">
+							<input type="text" name="otherDialect" disabled = "true" id="otherDialect" placeholder = "If others, please specify." value="">
+							</h6>
+   							</div>
+   							
+   							<!--<input type="text" name="dialect" class = "capitalize" id="dialect" placeholder = "Other dialect (Please specify...)" value=""> -->
+							<!--<h5>Email Address</h5>
+							<input type="text" name="email address" id="email" value="" />-->
+
+						</div><center>
+						<input class="submitprv" type="submit" name="prev" id="prev" value="PREVIOUS" />
+						<input class="submit" type="submit" name="submit_second" id="submit_second" onclick="checkCheckBoxes(this);" value="NEXT" /><br><br>
+						</center>
+					</div>   
+					<!-- #third_step -->
+					<div id="third_step">
+					<h1>Parent/Guardian's Economic Status</h1>
+					<hr />
+					<h5><b>NOTE:</b> The economic status of college student's parents in terms of <u>occupation</u>, <u>employment status</u>, <u>monthly income</u>, <u>family size</u>, <u>house</u>, <u>residential lot</u>, <u>light facilities used</u>, <u>water supply</u>, <u>type of toilet used</u>, <u>transporation</u>, <u>appliances</u> &amp; <u>furniture</u>.
+					<hr />
+					</h5>
+						<div class="form">	
+							<h5> OCCUPATION (Father) </h5>
+							<select id="occupationF" name="occupationF">
+								<option>–– Choose below ––</option>
+								<option>Government Employee</option>
+								<option>Private Employee</option>
+								<option>Business/Self-Employed</option>
+								<option>Fisherman/Farmer</option>
+								<option>OFW</option>
+								<option>NONE</option>
+							</select>
+							<h5> EMPLOYMENT STATUS (Father) </h5>
+							<select id="statusF" name="statusF">
+								<option>–– Choose below ––</option>
+								<option>Regular/Permanent</option>
+								<option>Casual/Temporary</option>
+								<option>Irregular</option>
+							</select>
+
+							<h5> OCCUPATION (Mother)</h5>
+							<select id="occupationM" name="occupationM">
+								<option>–– Choose below ––</option>
+								<option>Government Employee</option>
+								<option>Private Employee</option>
+								<option>Business/Self-Employed</option>
+								<option>Fisherman/Farmer</option>
+								<option>OFW</option>
+								<option>NONE</option>
+							</select>
+
+							<h5> EMPLOYMENT STATUS (Mother)</h5>
+							<select id="statusM" name="statusM">
+								<option>–– Choose below ––</option>
+								<option>Regular/Permanent</option>
+								<option>Casual/Temporary</option>
+								<option>Irregular</option>
+							</select>
+
+							<h5> FAMILY MONTHLY INCOME (Total income including incomes of parents)</h5>
+							<select id="income" name="income">
+								<option>–– Choose below ––</option>
+								<option>P7,500 &amp; below</option>
+								<option>P7,501 - P15,000</option>
+								<option>P15,001 - P22,500</option>
+								<option>P22,501 - P30,000</option>
+								<option>P30,001 &amp; above</option>
+							</select>
+							<h5> STATUS OF THE HOUSE WHERE YOU LIVE</h5>
+							<select id="house" name="house">
+								<option>–– Choose below ––</option>
+								<option>Owned</option>
+								<option>Rented/Leased</option>
+								<option>None</option>
+							</select>
+							<h5> STATUS OF THE RESIDENTIAL LOT WHERE YOU LIVE</h5>
+							<select id="lot" name="lot">
+								<option>–– Choose below ––</option>
+								<option>Owned</option>
+								<option>Rented/Leased</option>
+								<option>None</option>
+							</select>
+							<h5> LIGHT FACILITIES USED </h5>
+							<select id="light" name="light" onchange="disableLight(this)">
+								<option>–– Choose below ––</option>
+								<option>Electricity</option>
+								<option>Petroleum</option>
+								<option>Others</option>
+							</select>
+							<input type="text" name="otherLight" disabled = "true" id="otherLight" placeholder = "If others, please specify." value="">
+
+							<h5> MEANS OF WATER SUPPLY</h5>
+							<select id="water" name="water">
+								<option>–– Choose below ––</option>
+								<option>Open Well</option>
+								<option>Hand Pump</option>
+								<option>Electric Pump</option>
+								<option>Rain</option>
+								<option>Dumoy</option>
+								<option>NAWASA</option>
+							</select>
+
+							<h5> TYPE OF TOILET USED</h5>
+							<select id="toilet" name="toilet">
+								<option>–– Choose below ––</option>
+								<option>Flush Type</option>
+								<option>Antipolo (Closed Pit)</option>
+								<option>Public Toilet</option>
+								<option>None</option>
+							</select>
+
+							<h5> POSSESSION OF TRANSPORTATION </h5>
+							<select id="transport" name="transport" onchange="disableTransport(this)">
+								<option>–– Choose below ––</option>
+								<option>Car</option>
+								<option>Jeep</option>
+								<option>Motorcycle/Tricycle</option>
+								<option>Trisikad/Bicycle</option>
+								<option>None</option>
+								<option>Others</option>
+							</select>
+								<input type="text" name="otherTransport" disabled = "true" id="otherTransport" placeholder = "If others, please specify." value="">
+
+							<h5> Appliances Owned </h5>
+							<div class="checkbox">
+       					    <h6 style = "color: white;"><input type="checkbox" name="check[]" value = "Refrigerator" id = "check1" > Refrigerator
+    				        <input type="checkbox" name="check[]" value = "Gas Range" id = "check2">Gas Range
+    				        <input type="checkbox" name="check[]" value = "Stereo/CD/Radio" id = "check3">Stereo/CD/Radio
+    				        <input type="checkbox" name="check[]" value = "Electric Iron" id = "check4">Electric Iron
+    				        <input type="checkbox" name="check[]" value = "Air Conditioner" id = "check5">Air Conditioner
+    				        <input type="checkbox" name="check[]" value = "Electric Fan" id = "check6">Electric Fan
+    				        <input type="checkbox" name="check[]" value = "Gas Stove" id = "check7">Gas Stove
+    				        <input type="checkbox" name="check[]" value = "Sewing Machine" id = "check8">Sewing Machine
+    				        <input type="checkbox" name="check[]" value = "Computer" id = "check9">Computer
+    				        <input type="checkbox" name="check[]" value = "TV" id = "check10">TV
+    				        <input type="checkbox" name="check[]" value = "Tape Recorder" id = "check11">Tape Recorder
+    				         </h6>
+   							</div>
+   							<input type="checkbox" id = "check12" name=others onclick="enable_textAppliances(this.checked)">
+   							<input type="text" name="otherAppliances" id="otherAppliances" disabled = "true" placeholder = "If others, please specify." value="">
+							
+						</div>      <div class="clear"></div><center>
+						<input class="submitprv" type="submit" name="prev2" id="prev2" value="PREVIOUS" />
+						<input class="submit" type="submit" name="submit_third" id="submit_third" onclick="checkCheckBoxes(this);" value="NEXT" /><br><br>
+						<center>
+						
+					</div>    <div class="clear"></div>
+					
+					
+					<!-- #fourth_step -->
+					<div id="fourth_step">
+					<h1>YOUR PROFILE</h1>
+						<div class="form">
+							<table>
+								<tr><td><h2>PERSONAL DATA</h2></td><td id = "dash"></td></tr>
+								<tr><td>Name</td><td></td></tr>
+								<tr><td>Address</td><td></td></tr>
+								<tr><td>Course</td><td></td></tr>
+								<tr><td>Gender</td><td></td></tr>
+								<tr><td>Age</td><td></td></tr>
+								<tr><td>Marital Status</td><td></td></tr>
+								<tr><td># of siblings enrolled in DNSC</td><td></td></tr>
+								<tr><td>Stanine (OLSAT Result)</td><td></td></tr>
+								<tr><td>Communication</td><td></td></tr>
+								<tr><td><h2>SOCIAL STATUS</h2></td><td id = "dash"></td></tr>
+								<tr><td>Name of High School &amp; Year Graduated</td><td></td></tr>
+								<tr><td>High School Type Origin</td><td></td></tr>
+								<tr><td>Ethnic Origin</td><td></td></tr>
+								<tr><td>Number of Sibling(s)</td><td></td></tr>
+								<tr><td>Father's Name &amp; Educational attainment</td><td></td></tr>
+								<tr><td>Mother's Name &amp; Education attainment</td><td></td></tr>
+								<tr><td>Number of Sibling/s already in school (Elementary, High School, College, etc.)</td><td></td></tr>
+								<tr><td>Sibling's name &amp; Educational attainment</td><td></td></tr>
+								<tr><td>Religion</td><td></td></tr>
+								<tr><td>Dialect/s spoken</td><td></td></tr>
+								<tr><td><h2>ECONOMIC STATUS</h2></td><td id = "dash"></td></tr>
+								<tr><td>Occupation</td><td></td></tr>
+								<tr><td>Employment Status</td><td></td></tr>
+								<tr><td>Family Monthly Income</td><td></td></tr>
+								<tr><td>Status of the house</td><td></td></tr>
+								<tr><td>Status of residential lot</td><td></td></tr>
+								<tr><td>Light facilities</td><td></td></tr>
+								<tr><td>Means of water supply</td><td></td></tr>
+								<tr><td>Type of toilet used</td><td></td></tr>
+								<tr><td>Possession of transportation</td><td></td></tr>
+								<tr><td>Appliances owned</td><td></td></tr>
+							</table>
+						</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix --><center>
+						<input class="submitprv" type="submit" name="prev3" id="prev3" value="REVIEW" />
+						<input class="send submit" type="submit" name="submit_fourth" id="submit_fourth" value="SUBMIT" /><br><br>
+						</center>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>
+		<div id="footer">
+		<div>
+			<span>Davao del Norte State College est. 1995</span>
+			<p>
+				Brgy. New Visayas, Panabo City, Davao del Norte, Philippines, 8105. All rights reserved.
+			</p>
+
+		</div>
+		<div id="connect">
+			<a href="https://facebook.com" id="facebook" target="_blank">Facebook</a>
+			<a href="https://twitter.com" id="twitter" target="_blank">Twitter</a>
+			<a href="https://google.com" id="googleplus" target="_blank">Google&#43;</a>
+		</div>
+	</div>
+</body>
+</html>
