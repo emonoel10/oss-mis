@@ -28,7 +28,7 @@ if (isset($_SESSION['login_user'])) {
                                             <link href="css/mobile.css" rel="stylesheet" type="text/css">
                                                 <link href="css/styleGrad.css" rel="stylesheet" type="text/css">
                                                     <title>
-                                                        DNSC - Forgot Password
+                                                        DNSC - Confirm Reset Password
                                                     </title>
                                                     <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" rel="stylesheet">
                                                         <!-- Bootstrap -->
@@ -149,6 +149,16 @@ if (isset($_SESSION['login_user'])) {
                                                                 animation: animatezoom 0.6s
                                                             }
 
+                                                            /* */
+                                                            .link_guide {
+                                                                color: #007577;
+                                                                font-size: 18px;
+                                                                padding: 0 46px;
+                                                                text-align: center;
+                                                                text-decoration: none;
+                                                                text-transform: uppercase;
+                                                            }
+
                                                             @-webkit-keyframes animatezoom {
                                                                 from {-webkit-transform: scale(0)}
                                                                 to {-webkit-transform: scale(1)}
@@ -187,7 +197,7 @@ if (isset($_SESSION['login_user'])) {
         <div id="header">
             <h1>
                 <a href="home.php">
-                    SOCIO-ECONOMIC PROFILING &38; GRADUATE TRACER SURVEY
+                    SOCIO-ECONOMIC PROFILING &#38; GRADUATE TRACER SURVEY
                 </a>
             </h1>
             <ul id="navigation">
@@ -222,50 +232,169 @@ if (isset($_SESSION['login_user'])) {
         </div>
         <div id="body">
             <img src="images/socio.jpg" width="100%"/>
-            <hr>
-                <h3 style="color: #077054; font-family: latoregular;">
-                    <center>
-                        FILL UP YOUR E-MAIL REGISTERED IN THE SYSTEM AND WE WILL SEND YOUR PASSWORD THRU IT.
-                    </center>
-                </h3>
-            </hr>
-            <fieldset>
-                <legend>
-                    <h1 style="font-family: Century Gothic; font-size: 50px;">
-                        Forgot Password
-                    </h1>
-                </legend>
-                <form class="modal-content animate" id="resetPasswordForm" method="POST">
-                    <div class="container">
-                        <div class="form-control">
-                            <label style="font-family: Century Gothic;">
-                                <i aria-hidden="true" class="fa fa-address-book">
-                                </i>
-                                <b>
-                                    E-mail or Username
-                                </b>
-                            </label>
-                            <input name="account" required="" type="text"/>
-                            <p class="help-block error_cntnr" style="color: red;">
-                                <?php echo $error; ?>
-                            </p>
-                        </div>
-                        <button name="resetPasswordSubmit" id="resetPasswordSubmit" type="submit">
-                            Submit
-                        </button>
+            <?php if (isset($_GET['id']) && isset($_GET['key'])) { ?>
+                <?php
+                        $connection = new mysqli("localhost", "root", "", "tryit");
+                        $resetPasswordGradId          = $_GET['id'];
+                        $uuidToken                    = $_GET['key'];
+
+                        // Get account data
+                        $accountDataQuery = $connection->query("SELECT * FROM graduate WHERE id = '$resetPasswordGradId';");
+
+                        // Check if reset account is exist
+                        $resetPasswordCheckerQuery = $connection->query("SELECT * FROM resetPassword WHERE graduate_id = '$resetPasswordGradId' AND is_reset = '0';");
+
+                        $accountDataRows = $accountDataQuery->num_rows;
+                        $confirmPasswordRows    = $resetPasswordCheckerQuery->num_rows;
+                        $accountDataRowData = $accountDataQuery->fetch_assoc();
+                        $confirmPasswordRowData = $resetPasswordCheckerQuery->fetch_assoc();
+
+                        $passwordHash = password_verify($accountDataRowData['pass'], $uuidToken);
+                    ?>
+                    <?php if ($confirmPasswordRows > 0 && $passwordHash) {?>
+                        <?php if ($confirmPasswordRowData['is_reset'] == 0) {?>
+                        <hr>
+                            <h3 style="color: #077054; font-family: latoregular;">
+                                <center>
+                                    FILL UP YOUR NEW PASSWORD IN THE FORM BELOW.
+                                </center>
+                            </h3>
+                        </hr>
+                        <fieldset>
+                            <legend>
+                                <h1 style="font-family: Century Gothic; font-size: 50px;">
+                                    Confirm New Password
+                                </h1>
+                            </legend>
+                            <form class="modal-content animate" id="confirmResetPasswordForm" method="POST">
+                                <div class="container">
+                                    <div class="form-control">
+                                        <label style="font-family: Century Gothic;">
+                                            <i aria-hidden="true" class="fa fa-address-book">
+                                            </i>
+                                            <b>
+                                                New Password
+                                            </b>
+                                        </label>
+                                        <input name="newAccountGradId" required="" type="hidden" value="<?php echo $resetPasswordGradId; ?>"/>
+                                        <input name="newAccountUuidToken" required="" type="hidden" value="<?php echo $uuidToken; ?>"/>
+                                        <input name="newAccountPassword" required="" type="password"/>
+                                        <p class="help-block error_cntnr" style="color: red;">
+                                            <?php echo $error; ?>
+                                        </p>
+                                    </div>
+                                    <button name="confirmResetPasswordSubmit" id="confirmResetPasswordSubmit" type="submit">
+                                        Reset Password
+                                    </button>
+                                    <br>
+                                        <br>
+                                        </br>
+                                    </br>
+                                </div>
+                            </form>
+                        </fieldset>
+                        <?php } else {?>
+                        <hr>
+                            <br>
+                                <br>
+                                    <br>
+                                        <h3 style="color: #077054; font-family: latoregular;">
+                                            <center>
+                                                USER PASSWORD ALREADY RESET!
+                                                <br>
+                                                    PLEASE USE THE LINKS BELOW TO REDIRECT.
+                                                </br>
+                                            </center>
+                                        </h3>
+                                    </br>
+                                </br>
+                            </br>
+                        </hr>
                         <br>
                             <br>
-                                <div>
-                                    Don't have an account?
-                                    <a href="signup.php?error=" style="text-decoration: none;">
-                                        Sign up here!
+                                <center>
+                                    <a class="link_guide" href="home.php">
+                                        Home
                                     </a>
-                                </div>
+                                    |
+                                    <a class="link_guide" href="login.php">
+                                        Login
+                                    </a>
+                                    |
+                                    <a class="link_guide" href="forgotPassword.php">
+                                        Forgot Password?
+                                    </a>
+                                </center>
                             </br>
                         </br>
-                    </div>
-                </form>
-            </fieldset>
+                        <?php }?>
+                    <?php } else {?>
+                    <hr>
+                        <br>
+                            <br>
+                                <br>
+                                    <h3 style="color: #077054; font-family: latoregular;">
+                                        <center>
+                                            USER RESET PASSWORD TOKEN RECORD NOT FOUND!
+                                            <br>
+                                                PLEASE CONTACT THE ADMINISTRATOR.
+                                            </br>
+                                        </center>
+                                    </h3>
+                                </br>
+                            </br>
+                        </br>
+                    </hr>
+                    <br>
+                        <br>
+                            <center>
+                                <a class="link_guide" href="home.php">
+                                    Home
+                                </a>
+                                |
+                                <a class="link_guide" href="login.php">
+                                    Login
+                                </a>
+                                |
+                                <a class="link_guide" href="forgotPassword.php">
+                                    Forgot Password?
+                                </a>
+                            </center>
+                        </br>
+                    </br>
+                    <?php }?>
+                <?php } else {?>
+                <hr>
+                    <br>
+                        <br>
+                            <br>
+                                <h3 style="color: #077054; font-family: latoregular;">
+                                    <center>
+                                        SOMETHING WENT WRONG WITH YOUR LINK!
+                                    </center>
+                                </h3>
+                            </br>
+                        </br>
+                    </br>
+                </hr>
+                <br>
+                    <br>
+                        <center>
+                            <a class="link_guide" href="home.php">
+                                Home
+                            </a>
+                            |
+                            <a class="link_guide" href="login.php">
+                                Login
+                            </a>
+                            |
+                            <a class="link_guide" href="forgotPassword.php">
+                                Forgot Password?
+                            </a>
+                        </center>
+                    </br>
+                </br>
+            <?php }?>
         </div>
         <div class="alert alert-danger" id="alertError" style="width:250px; height:auto; bottom:0; right:10px; position:fixed; display:none; padding-top:15px; padding-right:25px;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
