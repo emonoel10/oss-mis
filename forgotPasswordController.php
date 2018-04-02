@@ -2,7 +2,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
+require 'PHPMailer/class.phpmailer.php';
+require 'PHPMailer/class.smtp.php';
+
 session_start(); // Starting Session
+$error    = '';
 $msg      = ''; // Variable To Store Error Message
 $msgAdmin = '';
 
@@ -32,110 +36,112 @@ if (isset($_POST['account'])) {
         $account = stripslashes($account);
         $account = $connection->real_escape_string($account);
         // SQL query to fetch information of registerd users and finds user match.
-        $query = $connection->query("SELECT * FROM graduate WHERE username LIKE '%" . $account .
-            "%' OR email LIKE '%" . $account .
-            "%'");
-        $rows = $query->num_rows;
-        $data = $query->fetch_assoc();
+        $query = $connection->query("SELECT * FROM graduate WHERE username LIKE '%$account%' OR email LIKE '%$account%'");
+        $rows  = $query->num_rows;
+        $data  = $query->fetch_assoc();
+
         if ($rows == 1) {
             $accountId       = $data['id'];
             $accountEmail    = $data['email'];
             $accountPassword = $data['pass'];
 
-            $uuidToken = password_hash($accountPassword, PASSWORD_DEFAULT);
-
-            $setPasswordTokenQuery = $connection->query("INSERT INTO resetPassword (graduate_id, uuid_token, date_created) VALUES ('" . $accountId . "', '" . $uuidToken . "', NOW());");
-
             // Check if reset account is exist
-            $resetPasswordCheckerQuery = $connection->query("SELECT * FROM resetPassword WHERE graduate_id = '" . $accountId . "' AND uuid_token = '" . $uuidToken . "';");
-            $resetAccountRows          = $resetPasswordCheckerQuery->num_rows;
+            $resetPasswordCheckerQuery = $connection->query("SELECT * FROM resetPassword WHERE graduate_id = '$accountId' AND is_reset = '0';");
+            $resetPasswordRows         = $resetPasswordCheckerQuery->num_rows;
+            $resetPasswordRowData      = $resetPasswordCheckerQuery->fetch_assoc();
 
-            // if reset account is not exist even it is newly recorded in database
-            if ($resetAccountRows == 0) {
-                if (function_exists('mail')) {
-                    $mailTo      = $accountEmail;
-                    $mailFrom    = "admin.ossmis@gmail.com";
-                    $mailSubject = "OSS-MIS ADMIN: Reset Password for " . $accountEmail;
-                    $mailMsg     = "Good day!\r\nPlease click the <a href='" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . "/resetForgotPassword.php?id=" . $accountId . "&key=" . $uuidToken . "'>link</a> to reset your password on DNSC OSS-MIS System.\r\nIf the link is not working, please copy-paste the text to your browsers URL: " . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . "/resetForgotPassword.php?id=" . $accountId . "&key=" . $uuidToken . ".\r\n\n\nOSS-MIS Admin";
-                    // $mailHeaders = 'From: ' . $mailFrom . "\r\n" .
-                    // 'Reply-To: ' . $mailFrom . "\r\n" .
-                    // 'X-Mailer: PHP/' . phpversion() . "\r\n" .
-                    //     'MIME-Version: 1.0' . "\r\n" .
-                    //     'Content-type: text/html; charset=iso-8859-1';
+            // if reset account is not exist, generate uuid token and record
+            // else get the existing uuid token to send again
+            if ($resetPasswordRows == 0 && $resetPasswordRowData['is_reset'] == 0) {
+                $uuidToken = password_hash($accountPassword, PASSWORD_DEFAULT);
 
-                    $mailHeaders = array(
-                        'From'         => $mailFrom,
-                        'Reply-To'     => $mailFrom,
-                        'X-Mailer'     => 'PHP/' . phpversion(),
-                        'MIME-Version' => '1.0',
-                        'Content-type' => 'text/html; charset=iso-8859-1',
-                    );
+                $setPasswordTokenQuery = $connection->query("INSERT INTO resetPassword (graduate_id, uuid_token, date_created) VALUES ('$accountId', '$uuidToken', NOW());");
 
-                    $mailHeaders = implode(',', $mailHeaders);
 
-                    $mail = mail($mailTo, $mailSubject, $mailMsg, $mailHeaders);
-
-                    if ($mail) {
-                        $msg = 'Please check your email (' . $accountEmail . ') to get the password reset token and redirect to password reset confirmation page.';
-
-                        $data = array(
-                            'success'            => true,
-                            'msg'                => $msg,
-                            'data'               => $resetPasswordCheckerQuery,
-                            'resetPasswordExist' => false,
-                        );
-
-                        echo json_encode($data);
-                        return;
-                    } else {
-                        $msg = "Error sending email!";
-
-                        $data = array(
-                            'success'    => false,
-                            'msg'        => $msg,
-                            'mailStatus' => error_get_last(),
-                        );
-
-                        echo json_encode($data);
-                        return;
-                    }
-                } else {
-                    $msg = "Mail function is disabled!";
+                if ($connection->affected_rows == 0) {
+                    $msg = "Error creating token!";
 
                     $data = array(
-                        'success' => false,
-                        'msg'     => $msg,
+                        'success'    => false,
+                        'msg'        => $msg,
+                        'mailStatus' => error_get_last(),
                     );
 
                     echo json_encode($data);
                     return;
                 }
             } else {
-                $msg = "Token authentication error.";
+                $uuidToken = $resetPasswordRowData['uuid_token'];
+            }
+
+            var_dump($uuidToken);
+
+            if ($uuidToken !== '') {
+                $baseUrl     = sprintf("%s://%s%s", isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http', $_SERVER['SERVER_NAME'], rtrim(dirname($_SERVER['PHP_SELF']), '/\\'));
+                $mailTo      = $accountEmail;
+                $mailFrom    = "admin.ossmis@gmail.com"; // change to administrator's email address
+                $mailSubject = "OSS-MIS ADMIN: Reset Password for " . $accountEmail;
+
+                $mail          = new PHPMailer();
+                $mail->CharSet = "utf-8";
+                $mail->IsSMTP();
+                // enable SMTP authentication
+                $mail->SMTPAuth = true;
+                // GMail username
+                // change with active GMail account from developer/system administrator
+                $mail->Username = "emonoel10@gmail.com";
+                // GMail password
+                // change with password from username set above
+                $mail->Password   = "pangit_123";
+                $mail->SMTPSecure = "ssl";
+                // sets GMail as the SMTP server
+                // can change according to the
+                // web hosting SMTP Default Settings
+                $mail->Host     = "smtp.gmail.com";
+                $mail->Port     = "465"; // set the SMTP port for the GMail server
+                $mail->From     = $mailFrom;
+                $mail->FromName = 'OSS-MIS ADMIN';
+                $mail->AddAddress($mailTo, $mail->FromName);
+                $mail->Subject = $mailSubject;
+                $mail->IsHTML(true);
+                $mailMsg    = "Good day!<br><br>Please click the <a href='$baseUrl/forgotPasswordConfirm.php?id=$accountId&key=$uuidToken'>link</a> to reset your password on DNSC OSS-MIS System.<br><br>If the link is not working, please copy-paste the text to your browsers URL: ($baseUrl/forgotPasswordConfirm.php?id=$accountId&key=$uuidToken).<br><br><br>OSS-MIS Admin";
+                $mail->Body = $mailMsg;
+
+                if ($mail->Send()) {
+                    $msg = 'Please check your email (' . $accountEmail . ') to get the password reset token link.';
+
+                    $data = array(
+                        'success'            => true,
+                        'msg'                => $msg,
+                    );
+
+                    echo json_encode($data);
+                    return;
+                } else {
+                    $msg = "Error sending email!";
+
+                    $data = array(
+                        'success'    => false,
+                        'msg'        => $msg,
+                        'mailStatus' => error_get_last(),
+                    );
+
+                    echo json_encode($data);
+                    return;
+                }
+            } else {
+                $msg = "Token error!";
 
                 $data = array(
                     'success' => false,
                     'msg'     => $msg,
-                    'data'    => $resetPasswordCheckerQuery,
                 );
 
                 echo json_encode($data);
                 return;
             }
-
-            // $msg = 'Please check your email (' . $accountEmail . ') to get the password reset token and redirect to password reset confirmation page.';
-
-            // $data = array(
-            //     'success'            => true,
-            //     'msg'                => $msg,
-            //     'data'               => $setPasswordTokenQuery,
-            //     'resetPasswordExist' => false,
-            // );
-
-            // echo json_encode($data);
-            // return;
         } else {
-            $msg  = "Account not existed.";
+            $msg  = "Email or Username not existed.";
             $data = array(
                 'success' => false,
                 'msg'     => $msg,
@@ -146,5 +152,52 @@ if (isset($_POST['account'])) {
         }
 
         mysqli_close($connection); // Closing Connection
+    }
+}
+
+/**
+ * Check if confirm password form
+ * is submitted
+ */
+if (isset($_POST['newAccountPassword'])) {
+    $newAccountGradId    = $_POST['newAccountGradId'];
+    $newAccountUuidToken = $_POST['newAccountUuidToken'];
+    $newAccountPassword  = $_POST['newAccountPassword'];
+    $newAccountPassword  = md5($newAccountPassword);
+
+    $resetPasswordQuery = $connection->query("UPDATE graduate SET pass='$newAccountPassword' WHERE id='$newAccountGradId'");
+
+    if ($connection->affected_rows > 0) {
+        $doneResetPasswordQuery = $connection->query("UPDATE resetPassword SET is_reset = '1', date_updated = NOW() WHERE graduate_id='$newAccountGradId' AND uuid_token = '$newAccountUuidToken';");
+
+        if ($connection->affected_rows > 0) {
+            $msg = "Reset Password Successful!";
+
+            $data = array(
+                'success' => true,
+                'msg'     => $msg,
+            );
+
+            echo json_encode($data);
+            return;
+        } else {
+            $msg  = "Error updating reset password token.";
+            $data = array(
+                'success' => false,
+                'msg'     => $msg,
+            );
+
+            echo json_encode($data);
+            return;
+        }
+    } else {
+        $msg  = "Account password already existed.";
+        $data = array(
+            'success' => false,
+            'msg'     => $msg,
+        );
+
+        echo json_encode($data);
+        return;
     }
 }
