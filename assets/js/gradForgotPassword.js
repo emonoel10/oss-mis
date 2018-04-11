@@ -9,7 +9,7 @@ var forgotPassword = (function () {
             $("form#resetPasswordForm button#resetPasswordSubmit").empty().html('<div class="sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div>');
 
             $.ajax({
-                url: 'forgotPasswordController.php',
+                url: 'socioForgotPasswordController.php',
                 type: 'POST',
                 data: account,
                 dataType: 'json',
@@ -23,8 +23,9 @@ var forgotPassword = (function () {
                     }
                 },
                 error: function (xhr) {
-                    console.log('error: ' + window.JSON.stringify(xhr));
-                    $("form#resetPasswordForm p.error_cntnr").empty().text(xhr);
+                    console.log('error: ' + window.JSON.stringify(xhr.responseText));
+                    $("form#resetPasswordForm p.error_cntnr").empty().text("Error: " + window.JSON.stringify(xhr.responseText));
+                    $("form#resetPasswordForm button#resetPasswordSubmit").empty().text('Submit');
                 }
             })
         });
@@ -38,7 +39,7 @@ var forgotPassword = (function () {
             $("form#confirmResetPasswordForm button#confirmResetPasswordSubmit").empty().html('<div class="sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div>');
 
             $.ajax({
-                url: 'forgotPasswordController.php',
+                url: 'socioForgotPasswordController.php',
                 type: 'POST',
                 data: account,
                 dataType: 'json',
@@ -55,8 +56,9 @@ var forgotPassword = (function () {
                     }
                 },
                 error: function (xhr) {
-                    console.log('error: ' + window.JSON.stringify(xhr));
-                    $("form#confirmResetPasswordForm p.error_cntnr").empty().text(xhr);
+                    console.log('error: ' + window.JSON.stringify(xhr.responseText));
+                    $("form#confirmResetPasswordForm p.error_cntnr").empty().text("Error: " + window.JSON.stringify(xhr.responseText));
+                    $("form#confirmResetPasswordForm button#confirmResetPasswordSubmit").empty().text('Reset Password');
                 }
             })
         });

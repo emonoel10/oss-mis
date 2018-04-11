@@ -36,7 +36,7 @@ if (isset($_POST['account'])) {
         $account = stripslashes($account);
         $account = $connection->real_escape_string($account);
         // SQL query to fetch information of registerd users and finds user match.
-        $query = $connection->query("SELECT * FROM graduate WHERE username LIKE '%$account%' OR email LIKE '%$account%'");
+        $query = $connection->query("SELECT * FROM personal WHERE username LIKE '%$account%' OR email LIKE '%$account%'");
         $rows  = $query->num_rows;
         $data  = $query->fetch_assoc();
 
@@ -46,17 +46,16 @@ if (isset($_POST['account'])) {
             $accountPassword = $data['pass'];
 
             // Check if reset account is exist
-            $resetPasswordCheckerQuery = $connection->query("SELECT * FROM resetPassword WHERE graduate_id = '$accountId' AND is_reset = '0';");
+            $resetPasswordCheckerQuery = $connection->query("SELECT * FROM socioResetPassword WHERE personal_id = '$accountId' AND is_reset = '0';");
             $resetPasswordRows         = $resetPasswordCheckerQuery->num_rows;
             $resetPasswordRowData      = $resetPasswordCheckerQuery->fetch_assoc();
 
             // if reset account is not exist, generate uuid token and record
             // else get the existing uuid token to send again
-            if ($resetPasswordRows == 0 && $resetPasswordRowData['is_reset'] == 0) {
+            if ($resetPasswordRows == 0 || gettype($resetPasswordRows) == "undefined") {
                 $uuidToken = password_hash($accountPassword, PASSWORD_DEFAULT);
 
-                $setPasswordTokenQuery = $connection->query("INSERT INTO resetPassword (graduate_id, uuid_token, date_created) VALUES ('$accountId', '$uuidToken', NOW());");
-
+                $setPasswordTokenQuery = $connection->query("INSERT INTO socioResetPassword (personal_id, uuid_token, date_created) VALUES ('$accountId', '$uuidToken', NOW());");
 
                 if ($connection->affected_rows == 0) {
                     $msg = "Error creating token!";
@@ -73,8 +72,6 @@ if (isset($_POST['account'])) {
             } else {
                 $uuidToken = $resetPasswordRowData['uuid_token'];
             }
-
-            var_dump($uuidToken);
 
             if ($uuidToken !== '') {
                 $baseUrl     = sprintf("%s://%s%s", isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http', $_SERVER['SERVER_NAME'], rtrim(dirname($_SERVER['PHP_SELF']), '/\\'));
@@ -104,15 +101,15 @@ if (isset($_POST['account'])) {
                 $mail->AddAddress($mailTo, $mail->FromName);
                 $mail->Subject = $mailSubject;
                 $mail->IsHTML(true);
-                $mailMsg    = "Good day!<br><br>Please click the <a href='$baseUrl/forgotPasswordConfirm.php?id=$accountId&key=$uuidToken'>link</a> to reset your password on DNSC OSS-MIS System.<br><br>If the link is not working, please copy-paste the text to your browsers URL: ($baseUrl/forgotPasswordConfirm.php?id=$accountId&key=$uuidToken).<br><br><br>OSS-MIS Admin";
+                $mailMsg    = "Good day!<br><br>Please click the <a href='$baseUrl/socioForgotPasswordConfirm.php?id=$accountId&key=$uuidToken'>link</a> to reset your password on DNSC OSS-MIS System.<br><br>If the link is not working, please copy-paste the text to your browsers URL: ($baseUrl/socioForgotPasswordConfirm.php?id=$accountId&key=$uuidToken).<br><br><br>OSS-MIS Admin";
                 $mail->Body = $mailMsg;
 
                 if ($mail->Send()) {
                     $msg = 'Please check your email (' . $accountEmail . ') to get the password reset token link.';
 
                     $data = array(
-                        'success'            => true,
-                        'msg'                => $msg,
+                        'success' => true,
+                        'msg'     => $msg,
                     );
 
                     echo json_encode($data);
@@ -165,10 +162,10 @@ if (isset($_POST['newAccountPassword'])) {
     $newAccountPassword  = $_POST['newAccountPassword'];
     $newAccountPassword  = md5($newAccountPassword);
 
-    $resetPasswordQuery = $connection->query("UPDATE graduate SET pass='$newAccountPassword' WHERE id='$newAccountGradId'");
+    $resetPasswordQuery = $connection->query("UPDATE personal SET pass='$newAccountPassword' WHERE id='$newAccountGradId'");
 
     if ($connection->affected_rows > 0) {
-        $doneResetPasswordQuery = $connection->query("UPDATE resetPassword SET is_reset = '1', date_updated = NOW() WHERE graduate_id='$newAccountGradId' AND uuid_token = '$newAccountUuidToken';");
+        $doneResetPasswordQuery = $connection->query("UPDATE socioResetPassword SET is_reset = '1', date_updated = NOW() WHERE personal_id='$newAccountGradId' AND uuid_token = '$newAccountUuidToken';");
 
         if ($connection->affected_rows > 0) {
             $msg = "Reset Password Successful!";

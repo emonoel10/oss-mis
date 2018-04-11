@@ -222,7 +222,7 @@ THIS GRADUATE TRACER SURVEY INTENDS TO TRACE THE EMPLOYMENT EXPERIENCE(S) OF DAV
 
       <button type="submit" name = "submitGrad">Login</button>
       <p> Don't have an account? <a href = "registerGrad.php?error=" style="text-decoration: none;"> Sign up here! </a></p>
-      <p><a href = "forgotPassword.php" style="text-decoration: none;"> Forgot Password? </a></p>
+      <p><a href = "gradForgotPassword.php" style="text-decoration: none;"> Forgot Password? </a></p>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
