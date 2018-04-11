@@ -36,7 +36,7 @@ CREATE TABLE `account` (
 /*Data for the table `account` */
 
 insert  into `account`(`id`,`fname`,`lname`,`mname`,`email`,`schoolId`,`username`,`pass`,`cpass`) values 
-(25,'Jemuel','Orenio','Juaton','therealjemuelorenio@gmail.com','2013-10209','withlovejemuelorenio','2041c43c75bef0d5661ec20b456ee341','2041c43c75bef0d5661ec20b456ee341'),
+(25,'Jemuel','Orenio','Juaton','Knoth1974@einrot.com','2013-10209','withlovejemuelorenio','81dc9bdb52d04dc20036dbd8313ed055','2041c43c75bef0d5661ec20b456ee341'),
 (26,'','','','','','dnscadmin','d953484607418d917a316d610eb2647b','d953484607418d917a316d610eb2647b');
 
 /*Table structure for table `admin` */
@@ -260,6 +260,35 @@ insert  into `geninfo`(`id`,`username`,`fname`,`mname`,`lname`,`permanent_provin
 (3,'ll','ll','ll','ll','ijh','iuhiuh','iuhiu','','ijh','iuhiuh','iuhiu','','Female','ll@yahoo.com','Widow','57438975983'),
 (4,'noelc','Noel Joshua','AÃ±asco','Calonia','Davao del Norte','Panabo','Cagangohan','','','','','','Male','emonoel10@gmail.com','Single','09127708457');
 
+/*Table structure for table `gradResetPassword` */
+
+DROP TABLE IF EXISTS `gradResetPassword`;
+
+CREATE TABLE `gradResetPassword` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `graduate_id` int(50) NOT NULL,
+  `uuid_token` varchar(100) DEFAULT NULL,
+  `is_reset` tinyint(1) DEFAULT '0',
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+/*Data for the table `gradResetPassword` */
+
+insert  into `gradResetPassword`(`id`,`graduate_id`,`uuid_token`,`is_reset`,`date_created`,`date_updated`) values 
+(1,13,'$2y$10$N6yBcUS6YAkj1l4WqZ9GhebacW8d0ipXTjizNQC90QX',1,'2018-03-30 14:31:10','2018-03-30 23:33:53'),
+(2,13,'$2y$10$bX8mWuAzziXMJCiatbTtkuu/ZZJOPpZc8nyKzfy1KUL',1,'2018-03-31 00:13:34','2018-03-31 00:26:40'),
+(3,13,'$2y$10$qxQMLa9zESkt0NTaDEi9ueB3qP1T53MnhrjyDuW6jBA',1,'2018-03-31 00:27:55','2018-03-31 01:36:01'),
+(4,13,'$2y$10$W79X076Z1hE7VbaboQpNxeutTfeA3vZBRubbfN9Wik4',1,'2018-03-31 01:36:39','2018-03-31 01:38:41'),
+(5,13,'$2y$10$ZswgI9K0STf0t/tL/xAMLuM9u1jVUaRO2dVc0NnyzZU',1,'2018-03-31 01:41:16','2018-03-31 01:52:03'),
+(6,13,'$2y$10$N4mlPExpiweWoep8gg3bBeXr2Jcb/qx.YdfEMvwajZh',1,'2018-03-31 01:52:35','2018-03-31 01:58:16'),
+(7,13,'$2y$10$OkxaPbhlMIcOjHPpAcO.O.P4onSuwUdcaANCrwgwRZE',1,'2018-03-31 10:54:19','2018-03-31 11:45:11'),
+(8,13,'$2y$10$KLOid4W4XdLy5QiZHm8G6.XdX3210.v0Q1PES8VaIyA',1,'2018-03-31 11:48:57','2018-03-31 12:22:43'),
+(9,13,'$2y$10$cNf/x1lf0iXMi2b3JDHzM.0b2UsyWH2o6QioyKjYSPj',1,'2018-03-31 12:23:04','2018-03-31 12:54:12'),
+(10,13,'$2y$10$N8d8ov7y0Exhx./cKetEmOKdIIc2Hd6nL/wVPwW7EOfqu/CegDgji',1,'2018-03-31 12:57:15','2018-03-31 12:59:46');
+
 /*Table structure for table `graduate` */
 
 DROP TABLE IF EXISTS `graduate`;
@@ -291,7 +320,7 @@ insert  into `graduate`(`id`,`fname`,`lname`,`mname`,`email`,`username`,`pass`,`
 (10,'w','w','w','w@yahoo.com','w','f1290186a5d0b1ceab27f4e77c0c5d68','f1290186a5d0b1ceab27f4e77c0c5d68'),
 (11,'kk','kk','kk','kk@yahoo.com','kk','dc468c70fb574ebd07287b38d0d0676d','dc468c70fb574ebd07287b38d0d0676d'),
 (12,'mm','mm','mm','mm@yahoo.com','mm','b3cd915d758008bd19d0f2428fbb354a','b3cd915d758008bd19d0f2428fbb354a'),
-(13,'Noel Joshua','Calonia','AÃ±asco','Tues1932@jourrapide.com','noelc','ed2b1f468c5f915f3f1cf75d7068baae','ed2b1f468c5f915f3f1cf75d7068baae');
+(13,'Noel Joshua','Calonia','AÃ±asco','Agartudded81@dayrep.com','noelc','ed2b1f468c5f915f3f1cf75d7068baae','ed2b1f468c5f915f3f1cf75d7068baae');
 
 /*Table structure for table `highschool` */
 
@@ -454,35 +483,6 @@ insert  into `religion`(`id`,`religionName`) values
 (36,'UNITED CHURCH CHRISTIAN OF THE PHILIPPINES'),
 (37,'WESLEYAN CHURCH'),
 (38,'WORD OF HOPE');
-
-/*Table structure for table `resetPassword` */
-
-DROP TABLE IF EXISTS `resetPassword`;
-
-CREATE TABLE `resetPassword` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `graduate_id` int(50) NOT NULL,
-  `uuid_token` varchar(100) DEFAULT NULL,
-  `is_reset` tinyint(1) DEFAULT '0',
-  `date_created` datetime DEFAULT NULL,
-  `date_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-
-/*Data for the table `resetPassword` */
-
-insert  into `resetPassword`(`id`,`graduate_id`,`uuid_token`,`is_reset`,`date_created`,`date_updated`) values 
-(1,13,'$2y$10$N6yBcUS6YAkj1l4WqZ9GhebacW8d0ipXTjizNQC90QX',1,'2018-03-30 14:31:10','2018-03-30 23:33:53'),
-(2,13,'$2y$10$bX8mWuAzziXMJCiatbTtkuu/ZZJOPpZc8nyKzfy1KUL',1,'2018-03-31 00:13:34','2018-03-31 00:26:40'),
-(3,13,'$2y$10$qxQMLa9zESkt0NTaDEi9ueB3qP1T53MnhrjyDuW6jBA',1,'2018-03-31 00:27:55','2018-03-31 01:36:01'),
-(4,13,'$2y$10$W79X076Z1hE7VbaboQpNxeutTfeA3vZBRubbfN9Wik4',1,'2018-03-31 01:36:39','2018-03-31 01:38:41'),
-(5,13,'$2y$10$ZswgI9K0STf0t/tL/xAMLuM9u1jVUaRO2dVc0NnyzZU',1,'2018-03-31 01:41:16','2018-03-31 01:52:03'),
-(6,13,'$2y$10$N4mlPExpiweWoep8gg3bBeXr2Jcb/qx.YdfEMvwajZh',1,'2018-03-31 01:52:35','2018-03-31 01:58:16'),
-(7,13,'$2y$10$OkxaPbhlMIcOjHPpAcO.O.P4onSuwUdcaANCrwgwRZE',1,'2018-03-31 10:54:19','2018-03-31 11:45:11'),
-(8,13,'$2y$10$KLOid4W4XdLy5QiZHm8G6.XdX3210.v0Q1PES8VaIyA',1,'2018-03-31 11:48:57','2018-03-31 12:22:43'),
-(9,13,'$2y$10$cNf/x1lf0iXMi2b3JDHzM.0b2UsyWH2o6QioyKjYSPj',1,'2018-03-31 12:23:04','2018-03-31 12:54:12'),
-(10,13,'$2y$10$N8d8ov7y0Exhx./cKetEmOKdIIc2Hd6nL/wVPwW7EOfqu/CegDgji',1,'2018-03-31 12:57:15','2018-03-31 12:59:46');
 
 /*Table structure for table `schoolid` */
 
@@ -6944,6 +6944,26 @@ insert  into `social`(`id`,`username`,`ethnic`,`otherethnic`,`father`,`attainfat
 (41,'jemuelorenioofficial','Boholano','','Julian Orenio','Elementary Level','Cashier','Lilian Orenio','Elementary Level','Businesswoman','ROMAN CATHOLIC','','Visayan, Tagalog, English, Dabawenyo','','Singing, Dancing, Painting/Drawing','','','','Right','Relationship with same sex',''),
 (42,'darleneespera','Visayan','','FGGFGD DSDS','High School Level','CCXFSD','ZXCFZXV ','High School Level','DSFSDFD','Other Christian groups','','Dabawenyo','','Theater Arts','','','','Right','Family problem',''),
 (43,'carol jane','Dabawenyo','','roger g. garcia','Elementary Graduate','construction','mary ann garcia','College Graduate','housekeeper','ROMAN CATHOLIC','','Visayan, Tagalog, English','','Singing','','','','Right','Family problem','');
+
+/*Table structure for table `socioResetPassword` */
+
+DROP TABLE IF EXISTS `socioResetPassword`;
+
+CREATE TABLE `socioResetPassword` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `personal_id` int(50) NOT NULL,
+  `uuid_token` varchar(100) DEFAULT NULL,
+  `is_reset` tinyint(1) DEFAULT '0',
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `socioResetPassword` */
+
+insert  into `socioResetPassword`(`id`,`personal_id`,`uuid_token`,`is_reset`,`date_created`,`date_updated`) values 
+(1,25,'$2y$10$ogcvEZE.u.xL83vAkyz46eCP5p3QaUrm/f0NFVVtsMenf3jLiQXUq',1,'2018-04-10 04:29:00','2018-04-10 04:31:00');
 
 /*Table structure for table `student5` */
 

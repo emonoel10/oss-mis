@@ -224,6 +224,7 @@ THIS IS THE SOCIO-ECONOMIC PROFILING OF DAVAO DEL NORTE STATE COLLEGE (DNSC). IT
 
       <button type="submit" name = "submit">Login</button>
       <p> Don't have an account? <a href = "signup.php?error=" style="text-decoration: none;"> Sign up here! </a></p>
+      <p><a href = "socioForgotPassword.php" style="text-decoration: none;"> Forgot Password? </a></p>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
