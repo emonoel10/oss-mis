@@ -227,11 +227,11 @@ $connection          = new mysqli("localhost", "root", "", "tryit");
     $resetPasswordGradId = $_GET['id'];
     $uuidToken           = $_GET['key'];
 
-    // Get personal data
-    $accountDataQuery = $connection->query("SELECT * FROM personal WHERE id = '$resetPasswordGradId';");
+    // Get account data
+    $accountDataQuery = $connection->query("SELECT * FROM account WHERE id = '$resetPasswordGradId';");
 
-    // Check if reset personal is exist
-    $resetPasswordCheckerQuery = $connection->query("SELECT * FROM socioResetPassword WHERE personal_id = '$resetPasswordGradId' AND is_reset = '0';");
+    // Check if reset account is exist
+    $resetPasswordCheckerQuery = $connection->query("SELECT * FROM socioResetPassword WHERE account_id = '$resetPasswordGradId' AND is_reset = '0';");
 
     $accountDataRows        = $accountDataQuery->num_rows;
     $confirmPasswordRows    = $resetPasswordCheckerQuery->num_rows;

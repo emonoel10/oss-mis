@@ -40,7 +40,7 @@ if (isset($_POST['account'])) {
         $rows  = $query->num_rows;
         $data  = $query->fetch_assoc();
 
-        if ($rows == 1) {
+        if ($rows > 0) {
             $accountId       = $data['id'];
             $accountEmail    = $data['email'];
             $accountPassword = $data['pass'];
